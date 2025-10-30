@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: eval-java
+  datasource:
+    url: jdbc:h2:mem:usersdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    sql:
+      init:
+        mode: always
+  h2:
+    console:
+      enabled: true
+
+server:
+  error:
+    include-stacktrace: never
+
+app:
+  cors:
+    allowed-origins: "http://localhost:3000,http://localhost:4200"
+    allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
+    allowed-headers: "*"
+    allow-credentials: true
+  security:
+    jwt:
+      secret: "N1SuM$$v1oP0o0z3k7fC3yq1I9cf6H2e8qH7bV1z7V4="
+      issuer: "eval-java"
+      access-minutes: 30
+
+springdoc:
+  api-docs.enabled: true
+  swagger-ui.enabled: true
+
+logging:
+  level:
+    org.springdoc: TRACE
+    org.springframework.web: DEBUG
+debug: true
