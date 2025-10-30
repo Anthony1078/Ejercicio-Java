@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:usersdb_test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: false
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
+  h2:
+    console:
+      enabled: false
+
+app:
+  security:
+    jwt:
+      secret: "12345678901234567890123456789012_1234567890123456"
+      issuer: "eval-java-test"
+      access-minutes: 5
+
+logging:
+  level:
+    root: WARN
